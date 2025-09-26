@@ -1,5 +1,4 @@
 import { Link } from 'expo-router';
-import React from 'react';
 import { FlatList, Pressable, Text, View } from 'react-native';
 
 const data = [

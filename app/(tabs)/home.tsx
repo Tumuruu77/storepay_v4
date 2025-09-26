@@ -1,4 +1,4 @@
-import React from 'react';
+import { Link } from 'expo-router';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
 import { useAuth } from '@/store/useAuth';
@@ -9,6 +9,11 @@ export default function Home() {
     <View style={styles.container}>
       <Text style={styles.title}>StorePay</Text>
       <Text style={styles.subtitle}>You are logged in</Text>
+      <Link href="/orders" asChild>
+        <Pressable accessibilityRole="button" style={styles.button}>
+          <Text style={styles.buttonText}>View Orders</Text>
+        </Pressable>
+      </Link>
       <Pressable onPress={logout} style={styles.button}>
         <Text style={styles.buttonText}>Log out</Text>
       </Pressable>
