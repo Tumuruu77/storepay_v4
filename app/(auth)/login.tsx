@@ -46,7 +46,7 @@ export default function LoginScreen() {
         if ((bioSupported && !bioKeyExists) || (bioSupported && storedUsername !== username)) {
           biometricModalRef.current?.open?.();
         } else {
-          router.replace('/');
+          router.replace('/home');
         }
       })
       .catch((e: any) => {
