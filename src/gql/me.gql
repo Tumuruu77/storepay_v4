@@ -1,0 +1,7 @@
+# Example query placeholder
+query Me {
+  me {
+    id
+    name
+  }
+}

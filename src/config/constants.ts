@@ -1,0 +1,3 @@
+export const CLIENT_TOKEN_KEY = 'SP_CLIENT_TOKEN';
+export const USER_TOKEN_KEY = 'SP_USER_TOKEN';
+export const PERSISTENCE_KEY = 'APOLLO_PERSIST_CACHE';

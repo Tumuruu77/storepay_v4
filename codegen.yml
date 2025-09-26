@@ -1,0 +1,30 @@
+hooks:
+  afterAllFileWrite:
+    - prettier --write
+overwrite: true
+schema:
+  - ${GRAPHQL_HTTP_URL}:
+      headers:
+        Authorization: Bearer eyJraWQiOiI0NmVlOGIwNzg3ZDI0YWVmODJmYjA1YTU4ZGIyNDc5YzBkMmZmOWMzMzAxNDM2MjkyZmUwYzkzNDNhYTkxNzQ4IiwiYXBwIjoyLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJTdG9yZVBheSIsImlhdCI6MTczMjUxOTE4MCwiZXhwIjoxMTc2NDA3NjEzMiwianRpIjoiYjk1M2UwOWMtMjk3Zi00NGY1LWE5MWQtMDEzOWY2OGQ0OGNmIiwic2NvcGVzIjoicHVibGljIn0.G17bCx0-J7qRjLRnD4nS4Lyi1BRUMOLGcaKFvaS7uPfKxLpP1-0VDz3Ib2hBpyMevv6S5JVfu6_rty2kyeRbeXvM7iZziaKpAyCEruA8Jj6cnFc37DFYmFpR5Dg6TTNv0t5RzNUg_v8nwy5mRYP_azWUCZMNPQih9e4FqeY2fZSnrsT2tQPuIjKtHiMUC8pQninB5f0KTNvdVoqDFbDTDc5EJ6F9osMN8gT_VnHOP539Bnl-lkoQRfDwdVHhhJL5HWE7dBSLLndKp0xi6FeR_-43ZELYDafG1GuQx8DvbYvsyFd4tfpmAp3ENjUwBSfUV2WYf34GnvsfMDsnSogDUg
+
+generates:
+  src/types/graphql.d.ts:
+    documents: 'src/gql/**/*.gql'
+    plugins:
+      - typescript
+    config:
+      maybeValue: T
+
+  src/:
+    preset: near-operation-file
+    documents: 'src/gql/**/*.gql'
+    presetConfig:
+      extension: .generated.tsx
+      baseTypesPath: types/graphql.d.ts
+    plugins:
+      - typescript-operations
+      - typescript-react-apollo
+    config:
+      withHooks: true
+      preResolveTypes: false
+      maybeValue: T
